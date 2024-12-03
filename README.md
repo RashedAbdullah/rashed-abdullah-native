@@ -29,21 +29,25 @@ Welcome to the React Native Expo version of **Rashed Abdullah's Portfolio**! Thi
 ### Installation
 
 1. Clone this repository:
+
    ```bash
    git clone https://github.com/RashedAbdullah/portfolio-expo-app.git
    ```
 
 2. Navigate to the project directory:
+
    ```bash
    cd portfolio-expo-app
    ```
 
 3. Install dependencies:
+
    ```bash
    npm install
    ```
 
 4. Start the Expo server:
+
    ```bash
    npx expo start
    ```
@@ -77,14 +81,17 @@ portfolio-expo-app
 ## Development Workflow
 
 ### Adding New Features
+
 - Create a new directory or component in the **app/** folder.
 - Update navigation if required in the **app/index.js** file.
 
 ### Styling
+
 - Follow the global style conventions defined in the **styles/** folder.
 - Use responsive units to ensure consistent appearance across devices.
 
 ### Testing
+
 - Test the app on both Android and iOS simulators to ensure compatibility.
 - Use physical devices for real-world performance validation.
 
@@ -93,13 +100,17 @@ portfolio-expo-app
 ## Available Scripts
 
 ### Reset Project
+
 To start with a fresh directory:
+
 ```bash
 npm run reset-project
 ```
 
 ### Run Tests
+
 To execute unit tests:
+
 ```bash
 npm test
 ```
@@ -107,6 +118,7 @@ npm test
 ---
 
 ## Future Enhancements
+
 - Add **dark mode** for enhanced user experience.
 - Implement **push notifications** for new blogs or YouTube video uploads.
 - Introduce **localization** for multiple languages.
@@ -122,10 +134,10 @@ npm test
 ---
 
 ## Acknowledgments
+
 - This app is powered by [React Native](https://reactnative.dev/) and [Expo](https://expo.dev).
 - Inspired by my passion for building accessible and user-friendly platforms.
 
 ---
 
 Thank you for exploring my portfolio app! Your feedback and suggestions are always welcome. 😊
-
