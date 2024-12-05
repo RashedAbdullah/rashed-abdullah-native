@@ -129,7 +129,7 @@ npm test
 
 - **Portfolio Website**: [rashedabdullah.com](https://rashedabdullah.com)
 - **YouTube Channel**: [@RashedAbdullahBD](https://www.youtube.com/@RashedAbdullahBD)
-- **Contact**: For any queries or collaboration, email me at [info@rashedabdullah.com](mailto:info@rashedabdullah.com).
+- **Contact**: For any queries or collaboration, email me at [maarashed40@gmail.com](mailto:maarashed40@gmail.com).
 
 ---
 
