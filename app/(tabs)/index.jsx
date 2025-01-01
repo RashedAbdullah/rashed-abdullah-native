@@ -1,5 +1,4 @@
 import { View, Text, Image, TouchableOpacity, ScrollView } from "react-native";
-import React from "react";
 
 const HomeScreen = () => {
   return (
