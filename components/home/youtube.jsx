@@ -1,12 +1,27 @@
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { View, Text, Image, TouchableOpacity, Linking } from "react-native";
 import React from "react";
 
 const YouTubeSection = () => {
   return (
     <View className="mt-10">
-      <Text className="text-2xl font-bold text-[#0f172a] dark:text-white mb-6">
+      {/* Title */}
+      <Text className="text-2xl text-center font-bold text-[#0f172a] dark:text-white mb-4">
         আমার ইউটিউব চ্যানেল
       </Text>
+
+      {/* Subscribe Button */}
+      <TouchableOpacity
+        onPress={() =>
+          Linking.openURL("https://www.youtube.com/@RashedAbdullahBD")
+        }
+        className="bg-red-600 py-3 rounded-full mx-auto w-3/4 mb-6"
+      >
+        <Text className="text-center text-white font-bold text-lg">
+          সাবস্ক্রাইব করুন
+        </Text>
+      </TouchableOpacity>
+
+      {/* Video Cards */}
       <View
         style={{
           flexDirection: "row",
@@ -14,7 +29,6 @@ const YouTubeSection = () => {
           justifyContent: "space-between",
         }}
       >
-        {/* Example YouTube Video Cards */}
         {Array.from({ length: 4 }).map((_, index) => (
           <TouchableOpacity
             key={index}
