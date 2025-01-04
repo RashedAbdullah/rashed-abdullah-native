@@ -1,7 +1,8 @@
-import { View, Text, Image, TouchableOpacity, ScrollView } from "react-native";
+import { ScrollView } from "react-native";
 import HomeScreenPorile from "@/components/home/profile";
-import DiraySection from "@/components/home/article";
+import DiraySection from "@/components/home/diray";
 import ArticleSection from "@/components/home/article";
+import YoutubeSection from "@/components/home/youtube";
 
 const HomeScreen = () => {
   return (
@@ -9,6 +10,7 @@ const HomeScreen = () => {
       <HomeScreenPorile />
       <ArticleSection />
       <DiraySection />
+      <YoutubeSection />
     </ScrollView>
   );
 };
