@@ -15,6 +15,9 @@ const ArticleSection = () => {
           <Text className="text-md text-[#475569] dark:text-[#94a3b8] mt-1">
             একজন ডেভেলপার হিসাবে আমার যাত্রার একটি সংক্ষিপ্ত বিবরণ।
           </Text>
+          <Text className="text-sm font-semibold text-[#0f172a] dark:text-[#C5DEFE]">
+            আরও পড়ুন →
+          </Text>
         </TouchableOpacity>
         <TouchableOpacity className="p-4 bg-white dark:bg-[#1e293b] rounded-lg shadow mt-4">
           <Text className="text-lg font-semibold text-[#0f172a] dark:text-[#C5DEFE]">
@@ -22,6 +25,9 @@ const ArticleSection = () => {
           </Text>
           <Text className="text-md text-[#475569] dark:text-[#94a3b8] mt-1">
             রিঅ্যাক্ট নেটিভ ডেভেলপমেন্টে কীভাবে শুরু করবেন তা জানুন।
+          </Text>
+          <Text className="text-sm font-semibold text-[#0f172a] dark:text-[#C5DEFE]">
+            আরও পড়ুন →
           </Text>
         </TouchableOpacity>
       </View>

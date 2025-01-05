@@ -6,8 +6,8 @@ const MenuScreen = () => {
   // Define menu items
   const menuItems = [
     { title: "হোম", screen: "/" },
-    { title: "প্রবন্ধ", screen: "BlogScreen" },
-    { title: "দিনলিপি", screen: "DiaryScreen" },
+    { title: "প্রবন্ধ", screen: "/articles" },
+    { title: "দিনলিপি", screen: "/diray" },
     { title: "ইউটিউব চ্যানেল", screen: "/youtube" },
     { title: "পাঠ উপকরণ", screen: "LearningResourcesScreen" },
     { title: "আমার সম্পর্কে", screen: "/about" },
