@@ -1,12 +1,22 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
+import { Link } from "expo-router";
 
 const ArticleSection = () => {
   return (
     <View className="mt-8">
-      <Text className="text-2xl font-bold text-[#0f172a] dark:text-[#C5DEFE]">
-        প্রবন্ধ
-      </Text>
+      <View className="flex-row justify-between items-center align-middle px-4">
+        <Text className="text-2xl font-bold text-[#0f172a] dark:text-[#C5DEFE]">
+          প্রবন্ধ
+        </Text>
+
+        <Link href="/articles">
+          <Text className="font-bold text-[#0f172a] dark:text-[#C5DEFE] truncate">
+            আরও পড়ুন →
+          </Text>
+        </Link>
+      </View>
+
       <View className="mt-4">
         <TouchableOpacity className="p-4 bg-white dark:bg-[#1e293b] rounded-lg shadow">
           <Text className="text-lg font-semibold text-[#0f172a] dark:text-[#C5DEFE]">

@@ -113,6 +113,13 @@ export default function RootLayout() {
             ...getHeaderStyle(),
           }}
         />
+          <Stack.Screen
+          name="resources"
+          options={{
+            title: "পাঠ উপকরণ",
+            ...getHeaderStyle(),
+          }}
+        />
       </Stack>
 
       <StatusBar style={colorScheme === "dark" ? "light" : "dark"} />

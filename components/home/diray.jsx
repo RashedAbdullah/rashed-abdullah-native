@@ -1,3 +1,4 @@
+import { Link } from "expo-router";
 import React from "react";
 import { Text, View } from "react-native";
 import { TouchableOpacity } from "react-native";
@@ -5,9 +6,16 @@ import { TouchableOpacity } from "react-native";
 const DiarySection = () => {
   return (
     <View className="mt-8">
-      <Text className="text-2xl font-bold text-[#0f172a] dark:text-[#C5DEFE]">
-        দিনলিপি
-      </Text>
+      <View className="flex-row justify-between items-center px-4">
+        <Text className="text-2xl font-bold text-[#0f172a] dark:text-[#C5DEFE]">
+          দিনলিপি
+        </Text>
+        <Link href="/diray">
+          <Text className="font-bold text-[#0f172a] dark:text-[#C5DEFE] truncate">
+            আরও পড়ুন →
+          </Text>
+        </Link>
+      </View>
       <View className="mt-4">
         <TouchableOpacity className="p-4 bg-white dark:bg-[#1e293b] rounded-lg shadow">
           <Text className="text-lg font-semibold text-[#0f172a] dark:text-[#C5DEFE]">

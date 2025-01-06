@@ -1,11 +1,19 @@
+import { Link } from "expo-router";
 import { View, Text, TouchableOpacity } from "react-native";
 
 const LearningResources = () => {
   return (
     <View className="mt-10">
-      <Text className="text-2xl font-bold text-[#0f172a] dark:text-[#C5DEFE] mb-6">
-        শেখার উপকরণ
-      </Text>
+      <View className="flex-row justify-between items-center px-4 mb-4">
+        <Text className="text-2xl font-bold text-[#0f172a] dark:text-[#C5DEFE]">
+          পাঠ উপকরণ
+        </Text>
+        <Link href="/resources">
+          <Text className="font-bold text-[#0f172a] dark:text-[#C5DEFE] truncate">
+            আরও দেখুন →
+          </Text>
+        </Link>
+      </View>
       <View>
         {/* Example Resource Cards */}
         {[

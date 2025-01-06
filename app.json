@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "rashed-abdullah",
+    "name": "Rashed Abdullah",
     "slug": "rashed-abdullah",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -15,7 +15,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "rashedabdullah.feni"
     },
     "web": {
       "bundler": "metro",
@@ -36,6 +37,14 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "52354498-b93a-4a4a-ab43-6d4322f39b04"
+      }
     }
   }
 }

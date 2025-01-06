@@ -9,7 +9,7 @@ const MenuScreen = () => {
     { title: "প্রবন্ধ", screen: "/articles" },
     { title: "দিনলিপি", screen: "/diray" },
     { title: "ইউটিউব চ্যানেল", screen: "/youtube" },
-    { title: "পাঠ উপকরণ", screen: "LearningResourcesScreen" },
+    { title: "পাঠ উপকরণ", screen: "/resources" },
     { title: "আমার সম্পর্কে", screen: "/about" },
   ];
 

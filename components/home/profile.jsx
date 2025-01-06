@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, Linking } from "react-native";
 import React from "react";
 import { Image } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
@@ -40,6 +40,9 @@ const HomeScreenProfile = () => {
             borderRadius: 25,
             marginHorizontal: 10,
           }}
+          onPress={() =>
+            Linking.openURL("https://www.facebook.com/Rashed4Abdullah")
+          }
         >
           <FontAwesome name="facebook" size={24} color="#fff" />
         </TouchableOpacity>
@@ -55,23 +58,11 @@ const HomeScreenProfile = () => {
             borderRadius: 25,
             marginHorizontal: 10,
           }}
+          onPress={() =>
+            Linking.openURL("https://www.youtube.com/@RashedAbdullahBD")
+          }
         >
           <FontAwesome name="youtube" size={24} color="#fff" />
-        </TouchableOpacity>
-
-        {/* Instagram */}
-        <TouchableOpacity
-          style={{
-            alignItems: "center",
-            justifyContent: "center",
-            width: 40,
-            height: 40,
-            backgroundColor: "#C13584",
-            borderRadius: 25,
-            marginHorizontal: 10,
-          }}
-        >
-          <FontAwesome name="instagram" size={24} color="#fff" />
         </TouchableOpacity>
 
         {/* LinkedIn */}
@@ -85,6 +76,9 @@ const HomeScreenProfile = () => {
             borderRadius: 25,
             marginHorizontal: 10,
           }}
+          onPress={() =>
+            Linking.openURL("https://www.linkedin.com/in/rashed4abdullah/")
+          }
         >
           <FontAwesome name="linkedin" size={24} color="#fff" />
         </TouchableOpacity>
@@ -100,6 +94,7 @@ const HomeScreenProfile = () => {
             borderRadius: 25,
             marginHorizontal: 10,
           }}
+          onPress={() => Linking.openURL("https://github.com/RashedAbdullah")}
         >
           <FontAwesome name="github" size={24} color="#fff" />
         </TouchableOpacity>
