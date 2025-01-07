@@ -18,7 +18,7 @@ export default function RootLayout() {
 
   // Load custom fonts
   const [fontsLoaded] = useFonts({
-    SpaceMono: require("../assets/fonts/SutonnyOMJ.ttf"),
+    SpaceMono: require("../assets/fonts/QayyumBook.ttf"),
   });
 
   // Handle SplashScreen visibility
