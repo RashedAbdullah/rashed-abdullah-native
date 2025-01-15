@@ -1,34 +1,46 @@
-import React, { useState } from "react";
-import { View, Text, ScrollView, TouchableOpacity } from "react-native";
+import React, { useState, useEffect } from "react";
+import {
+  View,
+  Text,
+  ScrollView,
+  TouchableOpacity,
+  ActivityIndicator,
+} from "react-native";
+import RenderHTML from "react-native-render-html";
+import { useWindowDimensions } from "react-native";
+import { getEngToBn } from "../utils/get-eng-to-bn";
 
-const diaryEntries = [
-  {
-    id: "1",
-    date: "০১ জানুয়ারি, ২০২৫",
-    title: "নতুন বছরের পরিকল্পনা",
-    content:
-      "আজ আমি নতুন বছরের জন্য কিছু লক্ষ্য স্থির করেছি। আল্লাহর উপর ভরসা করে শুরু করতে চাই।",
-    year: "২০২৫",
-  },
-  {
-    id: "2",
-    date: "৩১ ডিসেম্বর, ২০২৪",
-    title: "গত বছরের সমাপ্তি",
-    content: "বছরের শেষ দিনটা অনেক সুন্দর ছিল। পরিবার নিয়ে অনেক সময় কাটিয়েছি।",
-    year: "২০২৪",
-  },
-];
-
-const categories = ["২০২৫", "২০২৪", "২০২৩", "২০২২", "২০২১", "২০২০", "২০১৯"]; // Categories for years
+const categories = ["2025", "2024", "2023", "2022", "2021", "2020", "2019"]; // Available years
 
 const DiaryScreen = () => {
-  const [selectedCategory, setSelectedCategory] = useState("সকল");
+  const [selectedCategory, setSelectedCategory] = useState("2025"); // Default year is 2025
+  const [diaries, setDiaries] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const { width } = useWindowDimensions();
 
-  // Filter diary entries by selected year
-  const filteredEntries =
-    selectedCategory === "সকল"
-      ? diaryEntries
-      : diaryEntries.filter((entry) => entry.year === selectedCategory);
+  useEffect(() => {
+    const fetchDiaries = async () => {
+      setLoading(true);
+      try {
+        const response = await fetch(
+          `https://www.rashedabdullah.com/api/diraies?year=${selectedCategory}`
+        );
+        const data = await response.json();
+        if (data.success) {
+          setDiaries(data.data);
+        } else {
+          setDiaries([]);
+        }
+      } catch (error) {
+        console.error("Error fetching diaries:", error);
+        setDiaries([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchDiaries();
+  }, [selectedCategory]);
 
   return (
     <View className="flex-1 bg-[#C5DEFE] dark:bg-[#0f172a]">
@@ -56,7 +68,7 @@ const DiaryScreen = () => {
                     : "text-gray-700 dark:text-gray-300"
                 }`}
               >
-                {category} ইং
+                {getEngToBn(category)} ইং
               </Text>
             </TouchableOpacity>
           ))}
@@ -65,39 +77,45 @@ const DiaryScreen = () => {
 
       {/* Diary Entries */}
       <ScrollView className="px-4 mt-4">
-        {filteredEntries.length > 0 ? (
-          filteredEntries.map((entry) => (
+        {loading ? (
+          <ActivityIndicator size="large" color="#0f172a" />
+        ) : diaries.length > 0 ? (
+          diaries.map((diary) => (
             <View
-              key={entry.id}
-              className="mb-6 p-4 bg-white dark:bg-[#1e293b] rounded-xl shadow-lg"
+              key={diary._id}
+              className="mb-6 p-4 bg-[#1e293b] rounded-xl shadow-lg"
             >
               {/* Date */}
-              <View className="flex-row items-center">
-                <Text className="text-lg text-gray-500 dark:text-gray-400">
-                  {entry.date} ইং
-                </Text>
-              </View>
-
-              {/* Content */}
-              <Text
-                className="text-md text-[#334155] dark:text-[#94a3b8] mt-2 leading-6"
-                numberOfLines={3}
-              >
-                {entry.content}
+              <Text className="text-lg font-bold dark:text-gray-400 text-center text-white">
+                {new Date(diary.date).toLocaleDateString("bn-BD", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}{" "}
+                ইং
               </Text>
 
-              {/* Read More */}
-              <TouchableOpacity className="mt-3">
-                <Text className="text-sm font-semibold text-[#0f172a] dark:text-[#C5DEFE]">
-                  আরও পড়ুন →
-                </Text>
-              </TouchableOpacity>
+              {/* Content */}
+              <RenderHTML
+                contentWidth={width}
+                source={{ html: diary.text }}
+                baseStyle={{
+                  fontSize: 16,
+                  color: "#fff",
+                  lineHeight: 24,
+                }}
+                tagsStyles={{
+                  em: { fontStyle: "italic" },
+                  strong: { fontWeight: "bold" },
+                  li: { marginBottom: 8 },
+                }}
+              />
             </View>
           ))
         ) : (
           <View className="flex-1 items-center justify-center">
             <Text className="text-lg font-semibold text-gray-500 dark:text-gray-400">
-              কোন দিনলিপি পাওয়া যায়নি।
+              এই বছরের জন্য কোন দিনলিপি পাওয়া যায়নি।
             </Text>
           </View>
         )}

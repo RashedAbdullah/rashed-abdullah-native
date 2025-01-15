@@ -1,6 +1,6 @@
 import { Link } from "expo-router";
 import { View, Text, TouchableOpacity } from "react-native";
-
+import { learningResources } from "../../data/learing-resources";
 const LearningResources = () => {
   return (
     <View className="mt-10">
@@ -16,24 +16,7 @@ const LearningResources = () => {
       </View>
       <View>
         {/* Example Resource Cards */}
-        {[
-          {
-            title: "রিয়াক্ট জেএস কোর্স",
-            description: "রিয়াক্ট জেএস এর বেসিক থেকে অ্যাডভান্স লেভেল শেখা।",
-          },
-          {
-            title: "নেক্সট জেএস টিউটোরিয়াল",
-            description: "নেক্সট জেএস ব্যবহার করে প্রজেক্ট তৈরি।",
-          },
-          {
-            title: "জাভাস্ক্রিপ্ট ফান্ডামেন্টাল",
-            description: "জাভাস্ক্রিপ্ট প্রোগ্রামিং এর বেসিক কনসেপ্ট।",
-          },
-          {
-            title: "টাইপস্ক্রিপ্ট গাইড",
-            description: "টাইপস্ক্রিপ্টের বেসিক এবং অ্যাডভান্স টপিক।",
-          },
-        ].map((resource, index) => (
+        {learningResources.map((resource, index) => (
           <TouchableOpacity
             key={index}
             className="mb-4 p-4 bg-white dark:bg-[#1e293b] rounded-lg shadow-md"

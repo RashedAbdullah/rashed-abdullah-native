@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -5,17 +6,17 @@ import {
   TouchableOpacity,
   Linking,
   ActivityIndicator,
+  ScrollView,
 } from "react-native";
-import React, { useEffect, useState } from "react";
 
 const YouTubeSection = () => {
   const [videos, setVideos] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true); // Ensure loading starts as true
+  const [error, setError] = useState(null); // Add error state for better handling
 
   useEffect(() => {
     const getVideos = async () => {
       try {
-        console.log("Fetching videos...");
         const response = await fetch(
           "https://www.rashedabdullah.com/api/videos"
         );
@@ -25,15 +26,14 @@ const YouTubeSection = () => {
         }
 
         const data = await response.json();
-        console.log("Fetched data:", data);
 
-        if (Array.isArray(data)) {
-          setVideos(data);
+        if (data?.data && Array.isArray(data.data)) {
+          setVideos(data.data);
         } else {
-          console.error("API returned data in an unexpected format:", data);
+          throw new Error("Unexpected API response format");
         }
-      } catch (error) {
-        console.error("Error fetching videos:", error.message);
+      } catch (err) {
+        setError(err.message);
       } finally {
         setLoading(false);
       }
@@ -42,15 +42,13 @@ const YouTubeSection = () => {
     getVideos();
   }, []);
 
+  // Loading state
   if (loading) {
     return (
-      <View className="flex-1 justify-center items-center">
-        {/* Title */}
+      <View className="flex-1 justify-center items-center p-4">
         <Text className="text-2xl text-center font-bold text-[#0f172a] dark:text-white mb-4">
           আমার ইউটিউব চ্যানেল
         </Text>
-
-        {/* Subscribe Button */}
         <TouchableOpacity
           onPress={() =>
             Linking.openURL("https://www.youtube.com/@RashedAbdullahBD")
@@ -66,15 +64,37 @@ const YouTubeSection = () => {
     );
   }
 
-  if (videos.length === 0) {
+  // Error state
+  if (error) {
     return (
-      <View className="flex-1 justify-center items-center">
-        {/* Title */}
+      <View className="flex-1 justify-center items-center p-4">
         <Text className="text-2xl text-center font-bold text-[#0f172a] dark:text-white mb-4">
           আমার ইউটিউব চ্যানেল
         </Text>
+        <TouchableOpacity
+          onPress={() =>
+            Linking.openURL("https://www.youtube.com/@RashedAbdullahBD")
+          }
+          className="bg-red-600 py-3 rounded-full mx-auto w-3/4 mb-6"
+        >
+          <Text className="text-center text-white font-bold text-lg">
+            সাবস্ক্রাইব করুন
+          </Text>
+        </TouchableOpacity>
+        <Text className="text-lg text-red-500 dark:text-red-400">
+          ভিডিও লোড করতে সমস্যা হয়েছে: {error}
+        </Text>
+      </View>
+    );
+  }
 
-        {/* Subscribe Button */}
+  // No videos state
+  if (videos.length === 0) {
+    return (
+      <View className="flex-1 justify-center items-center p-4">
+        <Text className="text-2xl text-center font-bold text-[#0f172a] dark:text-white mb-4">
+          আমার ইউটিউব চ্যানেল
+        </Text>
         <TouchableOpacity
           onPress={() =>
             Linking.openURL("https://www.youtube.com/@RashedAbdullahBD")
@@ -92,14 +112,12 @@ const YouTubeSection = () => {
     );
   }
 
+  // Render video list
   return (
-    <View className="mt-10">
-      {/* Title */}
+    <ScrollView className="mt-10 p-4">
       <Text className="text-2xl text-center font-bold text-[#0f172a] dark:text-white mb-4">
         আমার ইউটিউব চ্যানেল
       </Text>
-
-      {/* Subscribe Button */}
       <TouchableOpacity
         onPress={() =>
           Linking.openURL("https://www.youtube.com/@RashedAbdullahBD")
@@ -110,8 +128,6 @@ const YouTubeSection = () => {
           সাবস্ক্রাইব করুন
         </Text>
       </TouchableOpacity>
-
-      {/* Video Cards */}
       <View
         style={{
           flexDirection: "row",
@@ -138,7 +154,7 @@ const YouTubeSection = () => {
           </TouchableOpacity>
         ))}
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
